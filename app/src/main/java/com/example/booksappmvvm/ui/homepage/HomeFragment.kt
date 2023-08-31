@@ -12,10 +12,12 @@ import com.example.booksappmvvm.data.model.GetBookResponse
 import com.example.booksappmvvm.databinding.FragmentHomeBinding
 import com.example.booksappmvvm.data.retrofit.retrofitClient
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+@AndroidEntryPoint
 class HomeFragment : Fragment(), BooksAdapter.BookListener {
     private lateinit var binding: FragmentHomeBinding
     private val booksAdapter by lazy { BooksAdapter(this) }

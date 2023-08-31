@@ -12,7 +12,9 @@ import com.example.booksappmvvm.common.loadImage
 import com.example.booksappmvvm.data.model.GetBookDetailResponse
 import com.example.booksappmvvm.databinding.FragmentDetailBinding
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DetailFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailBinding

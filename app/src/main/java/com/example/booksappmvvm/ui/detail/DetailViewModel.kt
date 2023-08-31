@@ -5,10 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.booksappmvvm.data.model.BookDetail
 import com.example.booksappmvvm.data.repository.BooksRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class DetailViewModel : ViewModel() {
-
-    private val booksRepository = BooksRepository()
+@HiltViewModel
+class DetailViewModel @Inject constructor(private val booksRepository: BooksRepository) : ViewModel() {
 
     private var _bookDetailLiveData = MutableLiveData<BookDetail?>()
     val bookDetailLiveData: LiveData<BookDetail?>

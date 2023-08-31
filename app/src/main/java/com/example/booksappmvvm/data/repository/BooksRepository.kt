@@ -7,19 +7,19 @@ import com.example.booksappmvvm.data.model.Book
 import com.example.booksappmvvm.data.model.BookDetail
 import com.example.booksappmvvm.data.model.GetBookDetailResponse
 import com.example.booksappmvvm.data.model.GetBookResponse
-import com.example.booksappmvvm.data.retrofit.retrofitClient
+import com.example.booksappmvvm.data.source.BookService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class BooksRepository {
+class BooksRepository(private val bookService: BookService) {
 
     val booksLiveData = MutableLiveData<List<Book>?>()
     val bookDetailLiveData = MutableLiveData<BookDetail?>()
     val errorMessageLiveData = MutableLiveData<String>()
 
     fun getBooks() {
-        retrofitClient.retrofit.getAllBooks().enqueue(object: Callback<GetBookResponse> {
+        bookService.getAllBooks().enqueue(object: Callback<GetBookResponse> {
             override fun onResponse(
                 call: Call<GetBookResponse>,
                 response: Response<GetBookResponse>
@@ -41,7 +41,7 @@ class BooksRepository {
     }
 
     fun getBookDetail(id : Int) {
-        retrofitClient.retrofit.getBookDetail(id).enqueue(object : Callback<GetBookDetailResponse> {
+        bookService.getBookDetail(id).enqueue(object : Callback<GetBookDetailResponse> {
             override fun onResponse(
                 call: Call<GetBookDetailResponse>,
                 response: Response<GetBookDetailResponse>
